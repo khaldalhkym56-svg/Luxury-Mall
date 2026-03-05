@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن - الفخامة مول</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --edu-purple: #6f42c1;
+            --edu-purple-light: #f3f0ff;
+            --text-dark: #212529;
+        }
+
+        /* منع التمرير الأفقي والمساحات الزائدة */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #ffffff;
+            color: var(--text-dark);
+        }
+
+        body {
+            padding-top: 80px;
+        }
+
+        /* تنسيق النافبار */
+        .navbar {
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .navbar-brand {
+            font-size: 1.6rem;
+        }
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-dark) !important;
+            padding: 0.5rem 1rem !important;
+            transition: 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--edu-purple) !important;
+            font-weight: 700;
+        }
+
+        /* تعديل رأس الصفحة (بدون خلفية) */
+        .page-header {
+            background: transparent; /* إزالة الخلفية */
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .page-header h1 {
+            color: var(--edu-purple); /* تغيير لون النص للأرجواني */
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        .page-header p {
+            color: var(--edu-purple); /* تغيير لون النص للأرجواني */
+            font-size: 1.25rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* تنسيق الصور والبطاقات */
+        .about-img {
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            width: 100%;
+        }
+
+        .value-card {
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            border-radius: 1.5rem;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            transition: 0.3s ease;
+            height: 100%;
+        }
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--edu-purple-light);
+            box-shadow: 0 15px 35px rgba(111, 66, 193, 0.08);
+        }
+        
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background-color: var(--edu-purple-light);
+            color: var(--edu-purple);
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* الإحصائيات */
+        .stat-item {
+            padding: 2rem;
+            background: var(--edu-purple-light);
+            border-radius: 1.5rem;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--edu-purple);
+            display: block;
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: #111;
+            color: #eee;
+            padding: 5rem 0 2rem;
+            margin-top: 5rem;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.05);
+            color: #fff;
+            border-radius: 50%;
+            margin-left: 12px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .footer-social a:hover {
+            background-color: var(--edu-purple);
+            transform: translateY(-5px);
+        }
+        .phone-ltr {
+            direction: ltr;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">الفخامة<span style="color:var(--edu-purple)"> مول</span></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الأقسام</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="clothing.html">الملابس</a></li>
+                            <li><a class="dropdown-item" href="restaurants.html">المطاعم</a></li>
+                            <li><a class="dropdown-item" href="games.html">الألعاب التعليمية</a></li>
+                            <li><a class="dropdown-item" href="supermarket.html">السوبر ماركت</a></li>
+                            <li><a class="dropdown-item" href="home-tools.html">الأدوات المنزلية</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">اتصل بنا</a>
+                    </li>
+                </ul>
+                <div class="d-flex ms-lg-4">
+                    <a href="register.html" class="btn btn-primary rounded-pill px-4" style="background:var(--edu-purple); border:none">انضم إلينا</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header container">
+        <h1>من نحن</h1>
+        <p>تعرف على قصة الفخامة والتميز في قلب اليمن</p>
+        <div class="mx-auto mt-3" style="width: 80px; height: 4px; background: var(--edu-purple); border-radius: 2px;"></div>
+    </header>
+
+    <section class="container mb-5">
+        <div class="row align-items-center g-5 m-0">
+            <div class="col-lg-6 p-0">
+                <h2 class="fw-bold mb-4" style="color: var(--edu-purple);">الفخامة مول.. ريادة التسوق في إب</h2>
+                <p class="fs-5 text-muted mb-4">نحن وجهتكم الأولى التي تجمع بين رقيّ التصميم وتنوع الخيارات. انطلقنا برؤية يمنية طموحة لتقديم تجربة تضاهي مراكز التسوق العالمية.</p>
+                <p class="mb-4">منذ افتتاحنا في شارع تعز بقلب مدينة إب، حرصنا على أن نكون البيت الكبير لكل عائلة تبحث عن الجودة والترفيه والخدمة المتميزة في بيئة آمنة وفخمة.</p>
+                <div class="p-3 bg-light rounded-4 border-start border-4" style="border-color: var(--edu-purple) !important;">
+                    <p class="mb-0 fw-bold">"التزامنا هو تقديم الفخامة التي تستحقونها بكل تفاصيلها."</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=800&q=80" class="about-img" alt="الفخامة مول">
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">قيمنا الجوهرية</h2>
+        </div>
+        <div class="row g-4 m-0">
+            <div class="col-md-4">
+                <div class="value-card">
+                    <div class="icon-box"><i class="bi bi-award"></i></div>
+                    <h4 class="fw-bold">التميز</h4>
+                    <p class="text-muted">نسعى دائماً لنكون الأفضل من خلال اختيار أرقى العلامات التجارية وتدريب طاقمنا باحترافية.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-card">
+                    <div class="icon-box"><i class="bi bi-shield-lock"></i></div>
+                    <h4 class="fw-bold">الأمان</h4>
+                    <p class="text-muted">نولي خصوصية العائلة اليمنية وأمان أطفالهم أولوية قصوى من خلال أنظمة حماية متطورة.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-card">
+                    <div class="icon-box"><i class="bi bi-heart-pulse"></i></div>
+                    <h4 class="fw-bold">الرضا</h4>
+                    <p class="text-muted">ابتسامة زوارنا هي غايتنا، ونعمل جاهدين لتوفير كل سبل الراحة والرفاهية لهم.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5 mb-5">
+        <div class="row g-4 text-center m-0">
+            <div class="col-md-3">
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <small class="fw-bold">متجر ونشاط</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-item">
+                    <span class="stat-number">2026</span>
+                    <small class="fw-bold">نظرة للمستقبل</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <small class="fw-bold">إدارة يمنية</small>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-item">
+                    <span class="stat-number">24h</span>
+                    <small class="fw-bold">دعم تقني</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5 m-0">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-4">الفخامة مول</h5>
+                    <p style="color: #999; line-height: 1.8;">الوجهة الأولى للتسوق والترفيه في محافظة إب. نجمع لك كل ما تحتاجه في مكان واحد بأعلى معايير الفخامة والتميز.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-4">تواصل معنا</h5>
+                    <p class="mb-2"><i class="bi bi-geo-alt-fill ms-2" style="color:var(--edu-purple)"></i> اليمن، إب، شارع تعز</p>
+                    <p class="mb-2 phone-ltr"><i class="bi bi-whatsapp ms-2" style="color:var(--edu-purple)"></i> +967 771 599 127</p>
+                    <p class="mb-2"><i class="bi bi-envelope-fill ms-2" style="color:var(--edu-purple)"></i> khaldwlydalhkymalhkym@gmail.com</p>
+                </div>
+                <div class="col-lg-4 text-lg-start">
+                    <h5 class="fw-bold mb-4 text-center text-lg-end">تابعنا</h5>
+                    <div class="footer-social text-center text-lg-end">
+                        <a href="https://www.facebook.com/share/1HeK1mSQ4r/" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/kh.gr.w?igsh=cHgyMjh1Zjl0Nngy" target="_blank"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 pt-4 border-top border-secondary">
+                <p class="mb-0 text-white">&copy; 2026 الفخامة مول. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+ 

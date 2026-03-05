@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مول تجاري - قسم الألعاب التعليمية</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --edu-purple: #6f42c1;
+            --edu-teal: #20c997;
+            --edu-yellow: #ffc107;
+            --dark-gaming: #1a1a2e;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 76px;
+        }
+
+        /* رأس الصفحة - تصميم تعليمي ملهم */
+        .page-header {
+            background: linear-gradient(135deg, rgba(111, 66, 193, 0.9), rgba(32, 201, 151, 0.8)), 
+                        url('https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+        }
+
+        /* كروت التصنيفات */
+        .edu-category-card {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            height: 180px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .edu-category-card:hover { transform: scale(1.03); }
+        .edu-category-card img { height: 100%; width: 100%; object-fit: cover; filter: brightness(0.7); }
+        
+        .edu-category-card .overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .edu-category-card h4 { color: white; font-weight: 700; text-shadow: 1px 1px 5px rgba(0,0,0,0.5); }
+
+        /* بطاقة اللعبة */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(111, 66, 193, 0.15);
+        }
+
+        .card-img-container { position: relative; height: 220px; }
+        .product-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        .game-age-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--edu-yellow);
+            color: #333;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .game-topic-tag {
+            font-size: 0.75rem;
+            color: var(--edu-teal);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .product-price { font-size: 1.3rem; font-weight: 800; color: var(--edu-purple); }
+
+        /* زر عرض التفاصيل الجديد */
+        .btn-view-details {
+            background: var(--edu-purple);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .btn-view-details:hover {
+            background: var(--dark-gaming);
+            color: var(--edu-teal);
+            box-shadow: 0 5px 15px rgba(111, 66, 193, 0.3);
+        }
+
+        /* Footer */
+        .footer { background: var(--dark-gaming); color: #ccc; padding: 50px 0 20px; margin-top: 5rem; }
+        .footer h5 { color: white; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">الفخامة<span style="color:var(--edu-purple)"> مول</span></a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">الرئيسية</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">الأقسام</a>
+                    <ul class="dropdown-menu border-0 shadow">
+                        <li><a class="dropdown-item" href="clothing.html">الملابس</a></li>
+                        <li><a class="dropdown-item" href="restaurants.html">المطاعم</a></li>
+                        <li><a class="dropdown-item active" href="games.html">الألعاب التعليمية</a></li>
+                        <li><a class="dropdown-item" href="supermarket.html">السوبر ماركت</a></li>
+                        <li><a class="dropdown-item" href="home-tools.html">الأدوات المنزلية</a></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="d-flex align-items-center">
+                <a href="register.html" class="btn btn-primary rounded-pill px-4" style="background:var(--edu-purple); border:none">انضم إلينا</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-5 fw-bold">العب.. فكّر.. وتعلّم! 🎓</h1>
+            <p class="lead">مجموعتنا المختارة من الألعاب التعليمية لتنمية مهارات طفلك المستقبلية</p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="edu-category-card">
+                <img src="assets/img/games/building-toys.jpg" alt="Building">
+                <div class="overlay"><h4>ألعاب الفك والتركيب</h4></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="edu-category-card">
+                <img src="assets/img/games/montessori-method.jpg" alt="Montessori">
+                <div class="overlay"><h4>منهج المنتسوري</h4></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="edu-category-card">
+                <img src="assets/img/games/puzzles-brain-games.jpg" alt="Puzzles">
+                <div class="overlay"><h4>الألغاز والذكاء</h4></div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="edu-category-card">
+                <img src="assets/img/games/space-science.jpg" alt="STEM">
+                <div class="overlay"><h4>الفضاء والعلوم</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="fw-bold mb-4">أشهر الألعاب التعليمية العالمية ⭐</h3>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card">
+                <div class="card-img-container">
+                    <img src="assets/img/games/lego-technic.jpg" alt="LEGO Technic">
+                    <span class="game-age-badge">+10 سنوات</span>
+                </div>
+                <div class="card-body">
+                    <span class="game-topic-tag">هندسة | ميكانيكا</span>
+                    <h5 class="fw-bold mb-2">مجموعة ليجو الهندسية (Technic)</h5>
+                    <p class="text-muted small">تساعد الطفل على فهم حركة التروس والمحركات من خلال بناء نماذج واقعية.</p>
+                    <div class="mt-auto">
+                        <div class="product-price mb-3">420.00 ر.س</div>
+                        <button class="btn-view-details" onclick="saveAndGo(204, 'مجموعة ليجو الهندسية', 420, 'assets/img/games/lego-technic.jpg', 'تعتبر ليجو تيكنيك من أشهر الألعاب التي تنمي التفكير الهندسي والقدرة على حل المشكلات المعقدة للأطفال.')">
+                            استكشف وتعلم <i class="bi bi-lightbulb ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card">
+                <div class="card-img-container">
+                    <img src="assets/img/games/scrabble-junior.jpg" alt="Scrabble Junior">
+                    <span class="game-age-badge">+6 سنوات</span>
+                </div>
+                <div class="card-body">
+                    <span class="game-topic-tag">لغات | مفردات</span>
+                    <h5 class="fw-bold mb-2">لعبة تكوين الكلمات (سكرابل جونيور)</h5>
+                    <p class="text-muted small">الطريقة الأمتع لزيادة الحصيلة اللغوية وسرعة البديهة في ترتيب الحروف.</p>
+                    <div class="mt-auto">
+                        <div class="product-price mb-3">95.00 ر.س</div>
+                        <button class="btn-view-details" onclick="saveAndGo(205, 'لعبة سكرابل جونيور', 95, 'assets/img/games/scrabble-junior.jpg', 'لعبة كلاسيكية عالمية تساعد الأطفال على ربط الحروف وتكوين الكلمات بطريقة تنافسية ومسلية.')">
+                            استكشف وتعلم <i class="bi bi-lightbulb ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card">
+                <div class="card-img-container">
+                    <img src="assets/img/games/space-discovery-kit.jpg" alt="Space Discovery Kit">
+                    <span class="game-age-badge">+8 سنوات</span>
+                </div>
+                <div class="card-body">
+                    <span class="game-topic-tag">علوم | فضاء</span>
+                    <h5 class="fw-bold mb-2">حقيبة "ناسا" لاستكشاف الفضاء</h5>
+                    <p class="text-muted small">مجموعة تجارب لمحاكاة المجموعة الشمسية وإطلاق الصواريخ الورقية.</p>
+                    <div class="mt-auto">
+                        <div class="product-price mb-3">155.00 ر.س</div>
+                        <button class="btn-view-details" onclick="saveAndGo(206, 'حقيبة استكشاف الفضاء', 155, 'assets/img/games/space-discovery-kit.jpg', 'تتضمن المجموعة تليسكوباً صغيراً ونموذجاً للكواكب المضيئة في الظلام لتشجيع الطفل على حب علم الفلك.')">
+                            استكشف وتعلم <i class="bi bi-lightbulb ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+    <footer class="footer text-center">
+        <div class="container">
+            <h5>مول التسوق - قسم المعرفة</h5>
+            <p>لأن التعليم هو اللعبة الأكبر في الحياة.</p>
+            <hr class="border-secondary">
+            <p class="small mb-0">&copy; 2026 جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // دالة حفظ بيانات اللعبة والانتقال لصفحة التفاصيل
+        function saveAndGo(id, name, price, image, description) {
+            const gameData = {
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                description: description
+            };
+            
+            // تخزين في localStorage تحت مفتاح مخصص للألعاب
+            localStorage.setItem('selectedGame', JSON.stringify(gameData));
+            
+            // التوجيه لصفحة تفاصيل اللعبة (سنصممها لاحقاً)
+            window.location.href = 'game-details.html';
+        }
+
+       
+
+        document.addEventListener('DOMContentLoaded', updateCart);
+    </script>
+</body>
+</html>

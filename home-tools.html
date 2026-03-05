@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفخامة مول - قسم الأدوات المنزلية</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --tool-blue: #2c3e50;
+            --tool-accent: #3498db;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 80px;
+        }
+
+        /* رأس الصفحة */
+        .page-header {
+            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(52, 152, 219, 0.85)), 
+                        url('https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 3rem;
+        }
+
+        /* تصنيفات الأدوات */
+        .tool-category-card {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 180px;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .tool-category-card img { height: 100%; width: 100%; object-fit: cover; }
+        .tool-category-card .overlay {
+            position: absolute; inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+        }
+        .tool-category-card:hover .overlay { background: rgba(0, 0, 0, 0.6); }
+        .tool-category-card h5 { color: white; font-weight: 700; }
+
+        /* بطاقة المنتج */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        .product-card:hover { transform: translateY(-10px); }
+
+        .warranty-badge {
+            background: #e1f5fe;
+            color: #0288d1;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .power-info { color: #7f8c8d; font-size: 0.85rem; }
+        .product-price { font-size: 1.3rem; font-weight: 800; color: var(--tool-blue); }
+
+        /* زر عرض التفاصيل الجديد */
+        .btn-details {
+            border: 2px solid var(--tool-accent);
+            color: var(--tool-accent);
+            background: transparent;
+            border-radius: 50px;
+            font-weight: 700;
+            padding: 8px 25px;
+            width: 100%;
+            transition: var(--transition);
+        }
+        .btn-details:hover {
+            background: var(--tool-accent);
+            color: white;
+        }
+
+        .footer { background: #2c3e50; color: #bdc3c7; padding: 50px 0; margin-top: 4rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">الفخامة<span style="color:var(--tool-accent)"> مول</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">الأقسام</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="clothing.html">الملابس</a></li>
+                            <li><a class="dropdown-item" href="restaurants.html">المطاعم</a></li>
+                            <li><a class="dropdown-item" href="games.html">الألعاب التعليمية</a></li>
+                            <li><a class="dropdown-item" href="supermarket.html">السوبر ماركت</a></li>
+                            <li><a class="dropdown-item active" href="home-tools.html">الأدوات المنزلية</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="register.html" class="btn btn-primary rounded-pill px-4" style="background:var(--tool-accent); border:none">انضم إلينا</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">الأدوات المنزلية</h1>
+            <p class="lead">أجهزة عصرية تجعل حياتك أسهل وأكثر راحة</p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+    <div class="row mb-5 text-center">
+        <div class="col-md-3 col-6">
+            <div class="tool-category-card">
+                <img src="assets/img/home-tools/kitchen-appliances.jpg" alt="أجهزة المطبخ">
+                <div class="overlay"><h5>أجهزة المطبخ</h5></div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="tool-category-card">
+                <img src="assets/img/home-tools/cleaning-tools.jpg" alt="أدوات التنظيف">
+                <div class="overlay"><h5>أدوات التنظيف</h5></div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="tool-category-card">
+                <img src="assets/img/home-tools/personal-care-devices.jpg" alt="أجهزة العناية">
+                <div class="overlay"><h5>أجهزة العناية</h5></div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="tool-category-card">
+                <img src="assets/img/home-tools/home-electronics.jpg" alt="الكترونيات">
+                <div class="overlay"><h5>إلكترونيات منزلية</h5></div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="fw-bold mb-4">أفضل الأجهزة مبيعاً ⭐</h3>
+
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card">
+                <img src="assets/img/home-tools/samsung-neo-qled-tv.jpg" class="card-img-top" alt="تلفاز سامسونج">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="warranty-badge">ضمان سنتين</span>
+                        <span class="power-info">4K Smart</span>
+                    </div>
+                    <h5 class="fw-bold">تلفاز سامسونج Neo QLED</h5>
+                    <p class="text-muted small">تجربة سينمائية فائقة الوضوح مع تقنية الألوان الذكية ونظام صوت محيطي.</p>
+                    <div class="product-price mb-3">4,499.00 ر.س</div>
+                    <button class="btn-details" onclick="openToolDetails(404, 'تلفاز سامسونج Neo QLED', 4499.00, 'assets/img/home-tools/samsung-neo-qled-tv.jpg', 'استمتع بدقة 4K مع تقنية Quantum Matrix التي توفر تفاصيل مذهلة في المشاهد المظلمة والمضيئة على حد سواء.', 'سنتين', '200W')">
+                        عرض التفاصيل
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card">
+                <img src="assets/img/home-tools/italian-gas-oven.jpg" class="card-img-top" alt="فرن إيطالي">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="warranty-badge">ضمان 5 سنوات</span>
+                        <span class="power-info">Full Gas</span>
+                    </div>
+                    <h5 class="fw-bold">فرن غاز إيطالي فاخر</h5>
+                    <p class="text-muted small">صناعة إيطالية 100% مع 5 عيون أمان كامل وتصميم عصري من الستانلس ستيل.</p>
+                    <div class="product-price mb-3">2,750.00 ر.س</div>
+                    <button class="btn-details" onclick="openToolDetails(405, 'فرن غاز إيطالي فاخر', 2750.00, 'assets/img/home-tools/italian-gas-oven.jpg', 'فرن احترافي بمساحة واسعة للخبز، يتميز بتوزيع حراري مثالي لضمان نضج الطعام بجودة المطاعم العالمية.', '5 سنوات', 'إيطالي الأصلي')">
+                        عرض التفاصيل
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card">
+                <img src="assets/img/home-tools/espresso-machine-pro.jpg" class="card-img-top" alt="ماكينة قهوة">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="warranty-badge">ضمان 3 سنوات</span>
+                        <span class="power-info">1500 واط</span>
+                    </div>
+                    <h5 class="fw-bold">ماكينة قهوة اسبريسو برو</h5>
+                    <p class="text-muted small">تحضير القهوة بلمسة احترافية مع مطحنة مدمجة ونظام تبخير الحليب.</p>
+                    <div class="product-price mb-3">899.00 ر.س</div>
+                    <button class="btn-details" onclick="openToolDetails(401, 'ماكينة قهوة اسبريسو برو', 899.00, 'assets/img/home-tools/espresso-machine-pro.jpg', 'استمتع بمذاق القهوة الإيطالية الأصيلة في منزلك مع ضغط 15 بار ونظام تسخين سريع.', '3 سنوات', '1500W')">
+                        عرض التفاصيل
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card">
+                <img src="assets/img/home-tools/cordless-vacuum.jpg" class="card-img-top" alt="مكنسة">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="warranty-badge">ضمان سنتين</span>
+                        <span class="power-info">لاسلكية</span>
+                    </div>
+                    <h5 class="fw-bold">مكنسة كهربائية لاسلكية</h5>
+                    <p class="text-muted small">قوة شفط جبارة مع بطارية تدوم طويلاً لتنظيف المنزل بالكامل بسهولة.</p>
+                    <div class="product-price mb-3">550.00 ر.س</div>
+                    <button class="btn-details" onclick="openToolDetails(402, 'مكنسة كهربائية لاسلكية', 550.00, 'assets/img/home-tools/cordless-vacuum.jpg', 'مكنسة ذكية وخفيفة الوزن تصل لأصعب الأماكن مع فلتر HEPA لتنقية الهواء.', 'سنتين', 'Wireless')">
+                        عرض التفاصيل
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="product-card">
+                <img src="assets/img/home-tools/sport-blender.jpg" class="card-img-top" alt="خلاط">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="warranty-badge">ضمان سنة</span>
+                        <span class="power-info">1000 واط</span>
+                    </div>
+                    <h5 class="fw-bold">خلاط رياضي سريع</h5>
+                    <p class="text-muted small">مثالي لتحضير العصائر والمثلجات في ثوانٍ مع شفرات ستانلس ستيل.</p>
+                    <div class="product-price mb-3">180.00 ر.س</div>
+                    <button class="btn-details" onclick="openToolDetails(403, 'خلاط رياضي سريع', 180.00, 'assets/img/home-tools/sport-blender.jpg', 'محرك قوي جداً لتحضير الوجبات الصحية بسرعة وسهولة.', 'سنة واحدة', '1000W')">
+                        عرض التفاصيل
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p>جميع الحقوق محفوظة &copy; 2026 الفخامة مول - قسم الأدوات المنزلية</p>
+            <div class="mt-2">
+                <i class="bi bi-shield-check me-1"></i> تسوق آمن | <i class="bi bi-truck me-1"></i> توصيل للمنزل
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // دالة حفظ البيانات والانتقال لصفحة التفاصيل
+        function openToolDetails(id, name, price, image, desc, warranty, power) {
+            const toolData = {
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                description: desc,
+                warranty: warranty,
+                power: power
+            };
+            
+            // حفظ الكائن في التخزين المحلي
+            localStorage.setItem('selectedTool', JSON.stringify(toolData));
+            
+            // التوجه لصفحة التفاصيل
+            window.location.href = 'home-tools-details.html';
+        }
+    </script>
+</body>
+</html>

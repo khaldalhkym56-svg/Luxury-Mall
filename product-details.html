@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج - مول التسوق</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd; 
+            --primary-hover: #0a58ca;
+            --text-dark: #2c3e50;
+            --gray-color: #7f8c8d;
+            --light-bg: #f8f9fa;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            padding-top: 76px;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+        
+        .navbar-brand span { color: var(--primary-color); font-weight: 700; }
+
+        /* مسار التنقل */
+        .breadcrumb-section {
+            background-color: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+        .breadcrumb-item a { color: var(--gray-color); text-decoration: none; }
+        .breadcrumb-item.active { color: var(--primary-color); font-weight: 600; }
+
+        /* منطقة تفاصيل المنتج */
+        .product-image-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background-color: white;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-details-wrapper {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+
+        .product-title {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* متحكم الكمية */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            background: var(--light-bg);
+            border-radius: 50px;
+            padding: 5px;
+            width: max-content;
+            border: 1px solid #eee;
+        }
+
+        .qty-btn {
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .qty-btn:hover { background: var(--primary-color); color: white; }
+
+        .qty-input {
+            width: 60px;
+            border: none;
+            background: transparent;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* الأزرار */
+        .btn-add-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-add-cart:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.3);
+        }
+
+        .btn-back {
+            color: var(--gray-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .footer { background-color: #212529; color: #fff; padding: 3rem 0; margin-top: 5rem; }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--text-dark);">
+    الفخامة<span style="color: var(--primary-color);"> مول</span>
+</a>
+
+            <div class="d-flex align-items-center">
+                <div class="dropdown me-3">
+                    <a href="#" class="text-dark position-relative" data-bs-toggle="dropdown">
+                        <i class="bi bi-cart3 fs-4"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end border-0 shadow" id="cart-items-preview" style="min-width: 250px;">
+                        </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="clothing.html">الملابس</a></li>
+                    <li class="breadcrumb-item active" id="breadcrumb-product-name">تفاصيل المنتج</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <section class="container mb-5">
+        <a href="clothing.html" class="btn-back"><i class="bi bi-arrow-right"></i> العودة للملابس</a>
+
+        <div id="product-content" class="row g-5">
+            <div class="col-lg-6">
+                <div class="product-image-container">
+                    <img id="product-img" src="" alt="">
+                </div>
+             </div>
+             <div class="col-lg-6">
+                <div class="product-details-wrapper">
+                    <h1 class="product-title" id="product-title">تحميل...</h1>
+                    <div class="product-price" id="product-price">0 ر.س</div>
+                    <p class="product-description" id="product-desc"></p>
+
+                    <div class="mb-4">
+                        <label class="fw-bold mb-2">الكمية:</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn" onclick="changeQty(-1)"><i class="bi bi-dash"></i></button>
+                            <input type="number" id="qty-input" class="qty-input" value="1" min="1" readonly>
+                            <button class="qty-btn" onclick="changeQty(1)"><i class="bi bi-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <button class="btn-add-cart" onclick="addToCart()">
+                        <i class="bi bi-cart-plus me-2"></i> إضافة إلى السلة
+                    </button>
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <footer class="footer text-center" style="background-color: var(--light-bg); padding: 2rem 0; border-top: 1px solid #eee;">
+    <div class="container">
+        <p class="mb-0" style="color: var(--text-dark); font-weight: 500;">
+            &copy; 2026 <span class="fw-bold">الفخامة<span style="color: var(--primary-color);"> مول</span></span> - جميع الحقوق محفوظة
+        </p>
+    </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        let currentProduct = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. جلب البيانات من LocalStorage
+            const data = localStorage.getItem('selectedProduct');
+            
+            if (data) {
+                currentProduct = JSON.parse(data);
+                
+                // 2. تحديث الواجهة
+                document.getElementById('product-title').textContent = currentProduct.name;
+                document.getElementById('breadcrumb-product-name').textContent = currentProduct.name;
+                document.getElementById('product-price').textContent = currentProduct.price + ' ر.س';
+                document.getElementById('product-desc').textContent = currentProduct.description;
+                document.getElementById('product-img').src = currentProduct.image;
+            } else {
+                document.getElementById('product-content').innerHTML = '<div class="col-12 text-center"><h3>لم يتم اختيار منتج!</h3><a href="clothing.html" class="btn btn-primary mt-3">العودة للمتجر</a></div>';
+            }
+
+            updateCartUI();
+        });
+
+        function changeQty(val) {
+            let input = document.getElementById('qty-input');
+            let newVal = parseInt(input.value) + val;
+            if (newVal >= 1) input.value = newVal;
+        }
+
+        function addToCart() {
+            if (!currentProduct) return;
+
+            const qty = parseInt(document.getElementById('qty-input').value);
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+
+            const index = cart.findIndex(item => item.id === currentProduct.id);
+            if (index > -1) {
+                cart[index].quantity += qty;
+            } else {
+                cart.push({
+                    id: currentProduct.id,
+                    name: currentProduct.name,
+                    price: currentProduct.price,
+                    quantity: qty
+                });
+            }
+
+            localStorage.setItem('restaurantCart', JSON.stringify(cart));
+            updateCartUI();
+
+            // تنبيه بسيط
+            alert('تمت إضافة ' + currentProduct.name + ' إلى السلة');
+        }
+
+        function updateCartUI() {
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').innerText = count;
+
+            const preview = document.getElementById('cart-items-preview');
+            preview.innerHTML = '<li><h6 class="dropdown-header">محتويات السلة</h6></li>';
+            
+            if (cart.length === 0) {
+                preview.innerHTML += '<li><span class="dropdown-item text-muted">السلة فارغة</span></li>';
+            } else {
+                cart.forEach(item => {
+                    preview.innerHTML += `<li><span class="dropdown-item">${item.name} (${item.quantity})</span></li>`;
+                });
+                preview.innerHTML += '<li><hr class="dropdown-divider"></li><li><a class="dropdown-item text-center text-primary fw-bold" href="#">إتمام الشراء</a></li>';
+            }
+        }
+    </script>
+</body>
+</html>

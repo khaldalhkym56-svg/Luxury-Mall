@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مول تجاري - قسم الملابس</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --primary-hover: #0b5ed7;
+            --light-color: #f8f9fa;
+            --text-dark: #2c3e50;
+            --shadow: 0 4px 15px rgba(0,0,0,0.05);
+            --shadow-hover: 0 10px 25px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            padding-top: 76px;
+            background-color: #f4f6f9;
+        }
+        
+        .navbar-brand span { color: var(--primary-color); font-weight: 700; }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), #0a58ca);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .filter-card {
+            border-radius: 12px;
+            padding: 1.5rem;
+            background-color: white;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        
+        .filter-title {
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #f1f3f5;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+
+        .product-card .card-img-top {
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .product-price { font-weight: 700; color: var(--primary-color); font-size: 1.2rem; }
+        .original-price { text-decoration: line-through; color: #adb5bd; font-size: 0.9rem; margin-right: 8px; }
+
+        .btn-view-details {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+        }
+
+        .btn-view-details:hover {
+            background-color: var(--primary-hover);
+            color: white;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+        }
+
+        .footer { background-color: #212529; color: #fff; padding-top: 4rem; margin-top: 4rem; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0; margin-top: 3rem; color: #adb5bd; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--text-dark); font-size: 1.5rem;">
+    الفخامة<span style="color: var(--primary-color);"> مول</span>
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">الأقسام</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item active" href="clothing.html">الملابس</a></li>
+                            <li><a class="dropdown-item" href="restaurants.html">المطاعم</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <a href="#" class="text-dark position-relative" id="cartDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-cart3 fs-4"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow" id="cart-items-list" style="min-width: 200px;">
+                            <li><h6 class="dropdown-header">السلة</h6></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-center" href="#">عرض السلة</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="page-header">
+        <div class="container">
+            <h1>أحدث صيحات الملابس</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb justify-content-center mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" style="color: white;">الملابس</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+    
+    <section class="container py-4">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="filter-card p-3 bg-white shadow-sm rounded-4 mb-4">
+                <h5 class="filter-title fw-bold mb-3">الأقسام</h5>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="men" checked>
+                    <label class="form-check-label" for="men">ملابس رجالي</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="women" checked>
+                    <label class="form-check-label" for="women">ملابس نسائية</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="kids" checked>
+                    <label class="form-check-label" for="kids">ملابس أطفال</label>
+                </div>
+                <hr>
+                <p class="small text-muted">استخدم الفلاتر لعرض نتائج مخصصة.</p>
+            </div>
+        </div>
+        
+        <div class="col-lg-9">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                        <div class="position-relative">
+                            <img src="assets/img/clothing/cotton-tshirt.jpg" class="card-img-top" alt="تيشيرت رجالي">
+                            <span class="discount-badge position-absolute top-0 start-0 m-3 bg-danger text-white px-2 py-1 rounded small">خصم 15%</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">تيشيرت قطني فاخر</h5>
+                            <p class="card-text text-muted small">قطن طبيعي ناعم مناسب للارتداء اليومي بجميع المقاسات.</p>
+                            <div class="mt-auto">
+                                <div class="mb-3">
+                                    <span class="product-price fw-bold text-primary fs-5">65.00 ر.س</span>
+                                    <span class="original-price text-decoration-line-through text-muted small ms-2">76.00 ر.س</span>
+                                </div>
+                                <button class="btn-view-details w-100 py-2 rounded-pill border-2 fw-bold" onclick="goToDetails(101, 'تيشيرت قطني فاخر', 65.00, 'assets/img/clothing/cotton-tshirt.jpg', 'تيشيرت رجالي مصنوع من أجود أنواع القطن لراحة تدوم طوال اليوم.')">
+                                    عرض التفاصيل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                        <div class="position-relative">
+                            <img src="assets/img/clothing/denim-jacket.jpg" class="card-img-top" alt="جاكيت جينز">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">جاكيت جينز عصري</h5>
+                            <p class="card-text text-muted small">تصميم كلاسيكي جذاب يمنحك مظهراً شبابياً أنيقاً.</p>
+                            <div class="mt-auto">
+                                <div class="mb-3">
+                                    <span class="product-price fw-bold text-primary fs-5">185.00 ر.س</span>
+                                </div>
+                                <button class="btn-view-details w-100 py-2 rounded-pill border-2 fw-bold" onclick="goToDetails(102, 'جاكيت جينز عصري', 185.00, 'assets/img/clothing/denim-jacket.jpg', 'جاكيت جينز عالي الجودة بتصميم يناسب جميع الأذواق.')">
+                                    عرض التفاصيل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                        <div class="position-relative">
+                            <img src="assets/img/clothing/evening-dress.jpg" class="card-img-top" alt="فستان سهرة">
+                            <span class="discount-badge position-absolute top-0 start-0 m-3 bg-success text-white px-2 py-1 rounded small">وصل حديثاً</span>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">فستان سهرة ناعم</h5>
+                            <p class="card-text text-muted small">فستان طويل بتصميم راقٍ يناسب مناسباتك الخاصة.</p>
+                            <div class="mt-auto">
+                                <div class="mb-3">
+                                    <span class="product-price fw-bold text-primary fs-5">290.00 ر.س</span>
+                                </div>
+                                <button class="btn-view-details w-100 py-2 rounded-pill border-2 fw-bold" onclick="goToDetails(103, 'فستان سهرة ناعم', 290.00, 'assets/img/clothing/evening-dress.jpg', 'فستان نسائي أنيق يبرز جمال إطلالتك في السهرات والمناسبات.')">
+                                    عرض التفاصيل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                        <div class="position-relative">
+                            <img src="assets/img/clothing/summer-blouse.jpg" class="card-img-top" alt="بلوزة صيفية">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">بلوزة شيفون صيفية</h5>
+                            <p class="card-text text-muted small">خامة باردة وتصميم مريح للأيام الحارة بألوان زاهية.</p>
+                            <div class="mt-auto">
+                                <div class="mb-3">
+                                    <span class="product-price fw-bold text-primary fs-5">120.00 ر.س</span>
+                                </div>
+                                <button class="btn-view-details w-100 py-2 rounded-pill border-2 fw-bold" onclick="goToDetails(104, 'بلوزة شيفون صيفية', 120.00, 'assets/img/clothing/summer-blouse.jpg', 'بلوزة نسائية خفيفة وأنيقة، مثالية للخروجات اليومية.')">
+                                    عرض التفاصيل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                        <div class="position-relative">
+                            <img src="assets/img/clothing/boys-summer-set.jpg" class="card-img-top" alt="طقم أطفال">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">طقم ولادي صيفي</h5>
+                            <p class="card-text text-muted small">طقم قطعتين (تيشيرت وشورت) بألوان مبهجة ورسومات كرتونية.</p>
+                            <div class="mt-auto">
+                                <div class="mb-3">
+                                    <span class="product-price fw-bold text-primary fs-5">85.00 ر.س</span>
+                                </div>
+                                <button class="btn-view-details w-100 py-2 rounded-pill border-2 fw-bold" onclick="goToDetails(105, 'طقم ولادي صيفي', 85.00, 'assets/img/clothing/boys-summer-set.jpg', 'ملابس أطفال مريحة وآمنة على البشرة لمغامرات الصيف.')">
+                                    عرض التفاصيل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="product-card h-100 shadow-sm border-0 rounded-4 overflow-hidden bg-white">
+                        <div class="position-relative">
+                            <img src="assets/img/clothing/girls-spring-dress.jpg" class="card-img-top" alt="فستان بناتي">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title fw-bold">فستان بناتي ربيعي</h5>
+                            <p class="card-text text-muted small">فستان مزين بالزهور يمنح طفلتك إطلالة رقيقة وجميلة.</p>
+                            <div class="mt-auto">
+                                <div class="mb-3">
+                                    <span class="product-price fw-bold text-primary fs-5">95.00 ر.س</span>
+                                </div>
+                                <button class="btn-view-details w-100 py-2 rounded-pill border-2 fw-bold" onclick="goToDetails(106, 'فستان بناتي ربيعي', 95.00, 'assets/img/clothing/girls-spring-dress.jpg', 'فستان قطني خفيف للأطفال بتصاميم وألوان ربيعية جذابة.')">
+                                    عرض التفاصيل
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <footer class="footer text-center" style="background-color: var(--light-color); padding: 3rem 0 1.5rem; border-top: 1px solid #eee;">
+    <div class="container pb-4">
+        <h5 class="fw-bold mb-3" style="color: var(--text-dark);">
+            الفخامة<span style="color: var(--primary-color);"> مول</span>
+        </h5>
+        <p class="text-muted mb-0">وجهتكم الأولى للأناقة والجودة في قلب اليمن.</p>
+    </div>
+    
+    <hr class="mx-auto" style="width: 50px; border-top: 2px solid var(--primary-color); opacity: 1;">
+
+    <div class="copyright pt-3">
+        <p class="mb-0" style="color: var(--text-dark); font-size: 0.9rem; font-weight: 500;">
+            &copy; 2026 <span class="fw-bold">الفخامة مول</span>. جميع الحقوق محفوظة.
+        </p>
+    </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // دالة حفظ بيانات المنتج والانتقال لصفحة التفاصيل
+        function goToDetails(id, name, price, image, description) {
+            const productData = {
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                description: description
+            };
+            
+            // تخزين البيانات في LocalStorage
+            localStorage.setItem('selectedProduct', JSON.stringify(productData));
+            
+            // الانتقال إلى صفحة تفاصيل المنتج (سننشئها لاحقاً)
+            window.location.href = 'product-details.html';
+        }
+
+        // تحديث عداد السلة عند تحميل الصفحة
+        function updateCartCounter() {
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || []; // نستخدم نفس السلة الموحدة
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').innerText = totalItems;
+        }
+
+        document.addEventListener('DOMContentLoaded', updateCartCounter);
+    </script>
+</body>
+</html>

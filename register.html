@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب - الفخامة مول</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --edu-purple: #6f42c1;
+            --edu-purple-light: #f3f0ff;
+            --text-dark: #212529;
+        }
+
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+        }
+
+        body { padding-top: 80px; }
+
+        /* تنسيق النافبار */
+        .navbar { background-color: #ffffff !important; border-bottom: 1px solid #f0f0f0; }
+        .navbar-brand { font-size: 1.6rem; }
+        .nav-link { font-weight: 500; color: var(--text-dark) !important; transition: 0.3s; }
+        .nav-link:hover, .nav-link.active { color: var(--edu-purple) !important; font-weight: 700; }
+
+        /* حاوية النموذج (الستايل الاحترافي) */
+        .register-container {
+            max-width: 850px;
+            margin: 40px auto;
+        }
+
+        .register-card {
+            background: #ffffff;
+            border: none;
+            border-radius: 2rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+            overflow: hidden;
+            padding: 3rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e0e0e0;
+            background-color: #fcfcfc;
+            transition: 0.3s;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--edu-purple);
+            box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.1);
+            background-color: #fff;
+        }
+
+        .btn-register {
+            background-color: var(--edu-purple);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn-register:hover {
+            background-color: #5a32a3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(111, 66, 193, 0.3);
+            color: white;
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: #111;
+            color: #eee;
+            padding: 5rem 0 2rem;
+            margin-top: 5rem;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.05);
+            color: #fff;
+            border-radius: 50%;
+            margin-left: 12px;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+        .footer-social a:hover {
+            background-color: var(--edu-purple);
+            transform: translateY(-5px);
+        }
+        .phone-ltr { direction: ltr; display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">الفخامة<span style="color:var(--edu-purple)"> مول</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الأقسام</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="clothing.html">الملابس</a></li>
+                            <li><a class="dropdown-item" href="restaurants.html">المطاعم</a></li>
+                            <li><a class="dropdown-item" href="games.html">الألعاب التعليمية</a></li>
+                            <li><a class="dropdown-item" href="supermarket.html">السوبر ماركت</a></li>
+                            <li><a class="dropdown-item" href="home-tools.html">الأدوات المنزلية</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">من نحن</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">اتصل بنا</a></li>
+                </ul>
+                <div class="d-flex ms-lg-4">
+                    <a href="login.html" class="btn btn-outline-primary rounded-pill px-4 border-2" style="color:var(--edu-purple); border-color:var(--edu-purple)">تسجيل الدخول</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container register-container">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold" style="color: var(--edu-purple);">إنشاء حساب جديد</h1>
+            <p class="text-muted">انضم إلى عائلة الفخامة مول واستمتع بأفضل تجربة تسوق في إب</p>
+        </div>
+
+        <div class="register-card">
+            <form id="registerForm" class="row g-4">
+                <div class="col-md-6">
+                    <label class="form-label">الاسم الأول</label>
+                    <input type="text" class="form-control" placeholder="مثال: خالد" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">الاسم الأخير</label>
+                    <input type="text" class="form-control" placeholder="مثال: الحكيم" required>
+                </div>
+                
+                <div class="col-md-12">
+                    <label class="form-label">البريد الإلكتروني</label>
+                    <input type="email" class="form-control" placeholder="name@example.com" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">كلمة المرور</label>
+                    <input type="password" class="form-control" placeholder="********" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">تأكيد كلمة المرور</label>
+                    <input type="password" class="form-control" placeholder="********" required>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">رقم الهاتف</label>
+                    <input type="tel" class="form-control" placeholder="771xxxxxx" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">المدينة</label>
+                    <select class="form-select" required>
+                        <option value="" selected disabled>اختر المدينة</option>
+                        <option value="إب">إب</option>
+                        <option value="صنعاء">صنعاء</option>
+                        <option value="تعز">تعز</option>
+                        <option value="عدن">عدن</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terms" required>
+                        <label class="form-check-label text-muted" for="terms">
+                            أوافق على <a href="#" class="text-decoration-none" style="color: var(--edu-purple);">الشروط والأحكام</a> وسياسة الخصوصية الخاصة بالفخامة مول.
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-register w-100">إنشاء حسابي الآن</button>
+                </div>
+
+                <div class="col-12 text-center mt-4">
+                    <p class="mb-0">لديك حساب بالفعل؟ <a href="login.html" class="fw-bold text-decoration-none" style="color: var(--edu-purple);">تسجيل الدخول</a></p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-5 m-0">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-4">الفخامة مول</h5>
+                    <p style="color: #999; line-height: 1.8;">الوجهة الأولى للتسوق والترفيه في محافظة إب. نجمع لك كل ما تحتاجه في مكان واحد بأعلى معايير الفخامة والتميز.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-4">تواصل معنا</h5>
+                    <p class="mb-2"><i class="bi bi-geo-alt-fill ms-2" style="color:var(--edu-purple)"></i> اليمن، إب، شارع تعز</p>
+                    <p class="mb-2 phone-ltr"><i class="bi bi-whatsapp ms-2" style="color:var(--edu-purple)"></i> +967 771 599 127</p>
+                    <p class="mb-2"><i class="bi bi-envelope-fill ms-2" style="color:var(--edu-purple)"></i> khaldwlydalhkymalhkym@gmail.com</p>
+                </div>
+                <div class="col-lg-4 text-lg-start text-center">
+                    <h5 class="fw-bold mb-4 text-lg-end">تابعنا</h5>
+                    <div class="footer-social text-lg-end">
+                        <a href="https://www.facebook.com/share/1HeK1mSQ4r/" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/kh.gr.w?igsh=cHgyMjh1Zjl0Nngy" target="_blank"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 pt-4 border-top border-secondary">
+                <p class="mb-0 text-white">&copy; 2026 الفخامة مول. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // كود الانتقال للصفحة الرئيسية عند نجاح التسجيل
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // منع الإرسال الافتراضي للتجربة
+            
+            // هنا يمكنك إضافة كود التحقق من البيانات لاحقاً
+            alert("تم إنشاء الحساب بنجاح! سيتم توجيهك الآن للرئيسية.");
+            window.location.href = "index.html"; // الانتقال لصفحة index.html
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج - الأدوات المنزلية</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --tool-blue: #2c3e50;
+            --tool-accent: #3498db;
+            --light-bg: #f8fbff;
+            --shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--light-bg);
+            padding-top: 90px;
+            color: #333;
+        }
+
+        /* حاوية التفاصيل */
+        .details-card {
+            background: white;
+            border-radius: 30px;
+            border: none;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+
+        .product-img-container {
+            background: #fff;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .product-img-container img {
+            max-width: 100%;
+            max-height: 450px;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .product-img-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .info-section {
+            padding: 50px;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .brand-badge {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--tool-accent);
+            padding: 6px 15px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .tool-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--tool-blue);
+            margin-bottom: 15px;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .spec-item {
+            background: #fdfdfd;
+            border: 1px dashed #ddd;
+            padding: 10px 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .spec-item i { color: var(--tool-accent); font-size: 1.2rem; }
+
+        .price-tag {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--tool-blue);
+            margin: 20px 0;
+        }
+
+        .description-text {
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* التحكم في الكمية والسلة */
+        .action-area {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            background: #eee;
+            border-radius: 12px;
+            padding: 5px;
+        }
+
+        .qty-selector button {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            border: none;
+            background: white;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .qty-selector input {
+            width: 50px;
+            text-align: center;
+            border: none;
+            background: transparent;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .btn-add-to-cart {
+            flex-grow: 1;
+            background: var(--tool-blue);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(44, 62, 80, 0.2);
+        }
+
+        .btn-add-to-cart:hover {
+            background: var(--tool-accent);
+            transform: translateY(-3px);
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: #888;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer { background: #2c3e50; color: white; padding: 40px 0; margin-top: 60px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+  مول <span style="color:var(--tool-accent)">الفخامة</span>
+</a>
+            <div class="d-flex">
+                <a href="#" class="text-dark position-relative">
+                    <i class="bi bi-cart3 fs-4"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <a href="home-tools.html" class="back-link"><i class="bi bi-arrow-right"></i> العودة للأدوات المنزلية</a>
+
+        <div class="details-card" id="tool-content">
+            <div class="row g-0">
+                <div class="col-md-6">
+                    <div class="product-img-container">
+                        <img id="main-img" src="" alt="صورة المنتج">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info-section">
+                        <span class="brand-badge"><i class="bi bi-shield-fill-check me-1"></i> وكيل معتمد</span>
+                        <h1 class="tool-title" id="tool-name">جاري التحميل...</h1>
+                        
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="bi bi-award"></i>
+                                <div>
+                                    <small class="text-muted d-block">الضمان</small>
+                                    <strong id="tool-warranty">-</strong>
+                                </div>
+                            </div>
+                            <div class="spec-item">
+                                <i class="bi bi-lightning-charge"></i>
+                                <div>
+                                    <small class="text-muted d-block">القوة</small>
+                                    <strong id="tool-power">-</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="price-tag" id="tool-price">0.00 ر.س</div>
+                        
+                        <h6 class="fw-bold mb-2">عن هذا الجهاز:</h6>
+                        <p class="description-text" id="tool-desc"></p>
+
+                        <hr class="my-4">
+
+                        <div class="action-area">
+                            <div class="qty-selector">
+                                <button onclick="changeQty(-1)"><i class="bi bi-dash"></i></button>
+                                <input type="number" id="qty-val" value="1" readonly>
+                                <button onclick="changeQty(1)"><i class="bi bi-plus"></i></button>
+                            </div>
+                            <button class="btn-add-to-cart" onclick="addToCart()">
+                                <i class="bi bi-cart-plus me-2"></i> إضافة إلى السلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer text-center">
+        <p class="mb-0">مول الفخامة - خدمة العملاء: +967 771 599 127 &copy; 2026</p>
+    </footer>
+
+    <script>
+        let selectedItem = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // جلب بيانات الأداة من التخزين المحلي
+            const data = localStorage.getItem('selectedTool');
+            
+            if (data) {
+                selectedItem = JSON.parse(data);
+                
+                // ملء العناصر بالبيانات
+                document.getElementById('tool-name').textContent = selectedItem.name;
+                document.getElementById('tool-price').textContent = selectedItem.price.toFixed(2) + ' ر.س';
+                document.getElementById('tool-desc').textContent = selectedItem.description;
+                document.getElementById('tool-warranty').textContent = selectedItem.warranty;
+                document.getElementById('tool-power').textContent = selectedItem.power;
+                document.getElementById('main-img').src = selectedItem.image;
+                document.title = selectedItem.name + " - تفاصيل";
+            } else {
+                window.location.href = 'home-tools.html';
+            }
+
+            updateCartBadge();
+        });
+
+        function changeQty(amt) {
+            const input = document.getElementById('qty-val');
+            let val = parseInt(input.value) + amt;
+            if (val >= 1) input.value = val;
+        }
+
+        function addToCart() {
+            if (!selectedItem) return;
+
+            const qty = parseInt(document.getElementById('qty-val').value);
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+
+            const index = cart.findIndex(i => i.id === selectedItem.id);
+            if (index > -1) {
+                cart[index].quantity += qty;
+            } else {
+                cart.push({
+                    id: selectedItem.id,
+                    name: selectedItem.name,
+                    price: selectedItem.price,
+                    quantity: qty
+                });
+            }
+
+            localStorage.setItem('restaurantCart', JSON.stringify(cart));
+            updateCartBadge();
+            alert(`تمت إضافة ${selectedItem.name} بنجاح إلى سلتك`);
+        }
+
+        function updateCartBadge() {
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').textContent = count;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الفخامة مول - قسم السوبر ماركت</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --market-green: #2ecc71;
+            --market-dark: #27ae60;
+            --text-dark: #2c3e50;
+            --light-bg: #f9fbf9;
+            --shadow: 0 10px 25px rgba(0,0,0,0.06);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--light-bg);
+            padding-top: 80px;
+        }
+
+        /* رأس الصفحة */
+        .page-header {
+            background: linear-gradient(rgba(46, 204, 113, 0.8), rgba(39, 174, 96, 0.9)), 
+                        url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1920&q=80') center/cover;
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 3rem;
+        }
+
+        /* كروت التصنيفات */
+        .supermarket-category-card {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            height: 140px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .supermarket-category-card:hover { transform: translateY(-5px); }
+        .supermarket-category-card img { height: 100%; width: 100%; object-fit: cover; }
+        .supermarket-category-card .overlay {
+            position: absolute; inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .supermarket-category-card h5 { color: white; font-weight: 700; margin: 0; }
+
+        /* بطاقة المنتج */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover { transform: translateY(-10px); }
+
+        .card-img-container { position: relative; height: 200px; }
+        .product-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        .fresh-badge {
+            position: absolute; top: 15px; right: 15px;
+            background: var(--market-green); color: white;
+            padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 1.5rem;
+        }
+
+        .product-price { font-size: 1.25rem; font-weight: 800; color: var(--market-dark); }
+        .product-weight { color: #888; font-size: 0.85rem; }
+
+        /* زر عرض التفاصيل */
+        .btn-view-details {
+            background: transparent;
+            color: var(--market-dark);
+            border: 2px solid var(--market-dark);
+            border-radius: 50px;
+            font-weight: 700;
+            padding: 8px 20px;
+            width: 100%;
+            transition: var(--transition);
+            margin-top: auto; /* لدفع الزر للأسفل دائماً */
+        }
+
+        .btn-view-details:hover {
+            background: var(--market-dark);
+            color: white;
+        }
+
+        .footer { background: #222; color: #bbb; padding: 40px 0; margin-top: 5rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">الفخامة<span style="color:var(--market-green)"> مول</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">الأقسام</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="clothing.html">الملابس</a></li>
+                            <li><a class="dropdown-item" href="restaurants.html">المطاعم</a></li>
+                            <li><a class="dropdown-item" href="games.html">الألعاب التعليمية</a></li>
+                            <li><a class="dropdown-item active" href="supermarket.html">السوبر ماركت</a></li>
+                            <li><a class="dropdown-item" href="home-tools.html">الأدوات المنزلية</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="register.html" class="btn btn-primary rounded-pill px-4" style="background:var(--market-green); border:none">انضم إلينا</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-5 fw-bold">السوبر ماركت</h1>
+            <p class="lead">منتجات طازجة، جودة مضمونة، وتوصيل سريع لمنزلك</p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        <div class="row g-3 mb-5">
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="supermarket-category-card">
+                    <img src="assets/img/supermarket/vegetables.jpg" alt="خضروات">
+                    <div class="overlay"><h5>خضروات</h5></div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="supermarket-category-card">
+                    <img src="assets/img/supermarket/fruits.jpg" alt="فواكه">
+                    <div class="overlay"><h5>فواكه</h5></div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="supermarket-category-card">
+                    <img src="assets/img/supermarket/meat.jpg" alt="لحوم">
+                    <div class="overlay"><h5>لحوم</h5></div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="supermarket-category-card">
+                    <img src="assets/img/supermarket/dairy-products.jpg" alt="ألبان">
+                    <div class="overlay"><h5>ألبان</h5></div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="supermarket-category-card">
+                    <img src="assets/img/supermarket/canned-food.jpg" alt="معلبات">
+                    <div class="overlay"><h5>معلبات</h5></div>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="supermarket-category-card">
+                    <img src="assets/img/supermarket/bakery.jpg" alt="مخبوزات">
+                    <div class="overlay"><h5>مخبوزات</h5></div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="fw-bold mb-4">أفضل العروض الطازجة 🌿</h3>
+
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="card-img-container">
+                        <img src="assets/img/supermarket/cherry-tomatoes.jpg" alt="طماطم كرزية" onerror="this.src='https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&q=80'">
+                        <span class="fresh-badge">طازج</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">طماطم كرزية عضوية</h5>
+                        <p class="product-weight">الوزن: 500 جرام</p>
+                        <div class="product-price mb-3">12.50 ر.س</div>
+                        <button class="btn-view-details" onclick="goToDetails(301, 'طماطم كرزية عضوية', 12.50, 'assets/img/supermarket/cherry-tomatoes.jpg', 'طماطم كرزية طازجة من مزارعنا المحلية، غنية بالنكهة ومثالية للسلطات.', '500 جرام')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="card-img-container">
+                        <img src="assets/img/supermarket/banana.jpg" alt="موز" onerror="this.src='https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=500&q=80'">
+                        <span class="fresh-badge">طبيعي</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">موز فلبيني فاخر</h5>
+                        <p class="product-weight">الوزن: 1 كجم تقريباً</p>
+                        <div class="product-price mb-3">7.00 ر.س</div>
+                        <button class="btn-view-details" onclick="goToDetails(302, 'موز فلبيني فاخر', 7.00, 'assets/img/supermarket/banana.jpg', 'موز منتقى بعناية، يتميز بقوام مثالي وطعم حلو غني بالفيتامينات.', '1 كجم')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="card-img-container">
+                        <img src="assets/img/supermarket/lamb-chops.jpg" alt="لحم غنم" onerror="this.src='https://images.unsplash.com/photo-1603048297172-c92544798d5e?w=500&q=80'">
+                        <span class="fresh-badge">يومي</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">ريش غنم بلدي طازج</h5>
+                        <p class="product-weight">الوزن: 1 كجم</p>
+                        <div class="product-price mb-3">85.00 ر.س</div>
+                        <button class="btn-view-details" onclick="goToDetails(303, 'ريش غنم بلدي طازج', 85.00, 'assets/img/supermarket/lamb-chops.jpg', 'لحم غنم بلدي مذبوح يومياً، يتميز بالجودة العالية والمذاق الأصيل للشواء.', '1 كجم')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="card-img-container">
+                        <img src="assets/img/supermarket/feta-cheese.jpg" alt="جبنة فيتا" onerror="this.src='https://images.unsplash.com/photo-1559561853-08451507cbe7?w=500&q=80'">
+                        <span class="fresh-badge">طبيعي</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">جبنة فيتا يونانية أصيلة</h5>
+                        <p class="product-weight">الوزن: 250 جرام</p>
+                        <div class="product-price mb-3">22.00 ر.س</div>
+                        <button class="btn-view-details" onclick="goToDetails(304, 'جبنة فيتا يونانية أصيلة', 22.00, 'assets/img/supermarket/feta-cheese.jpg', 'جبنة فيتا محضرة من حليب الماعز والأغنام الطبيعي، طعم كريمي لا يقاوم.', '250 جرام')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="card-img-container">
+                        <img src="assets/img/supermarket/tuna-can.jpg" alt="تونا" onerror="this.src='https://images.unsplash.com/photo-1623855244183-52fd8d3ce2f7?w=500&q=80'">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">تونا خفيفة قطعة واحدة</h5>
+                        <p class="product-weight">الوزن: 185 جرام</p>
+                        <div class="product-price mb-3">14.50 ر.س</div>
+                        <button class="btn-view-details" onclick="goToDetails(305, 'تونا خفيفة قطعة واحدة', 14.50, 'assets/img/supermarket/tuna-can.jpg', 'تونا فاخرة معبأة في زيت عباد الشمس، غنية بالأوميغا 3 والبروتين.', '185 جرام')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="product-card">
+                    <div class="card-img-container">
+                        <img src="assets/img/supermarket/butter-croissant.jpg" alt="كرواسون" onerror="this.src='https://images.unsplash.com/photo-1555507036-ab1f40ce88cb?w=500&q=80'">
+                        <span class="fresh-badge">ساخن</span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold mb-1">كرواسون فرنسي بالزبدة</h5>
+                        <p class="product-weight">العدد: 4 قطع</p>
+                        <div class="product-price mb-3">18.00 ر.س</div>
+                        <button class="btn-view-details" onclick="goToDetails(306, 'كرواسون فرنسي بالزبدة', 18.00, 'assets/img/supermarket/butter-croissant.jpg', 'مخبوزات فرنسية طازجة، هشة ومحضرة بأجود أنواع الزبدة الطبيعية.', '4 قطع')">
+                            عرض التفاصيل
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer text-center">
+        <div class="container">
+            <p class="mb-0 fw-bold">&copy; 2026 الفخامة<span style="color:var(--market-green)"> مول</span> - قسم السوبر ماركت</p>
+            <p class="small text-muted mt-2 mb-0">جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // الدالة المسؤولة عن حفظ البيانات والانتقال لصفحة التفاصيل
+        function goToDetails(id, name, price, image, description, weight) {
+            const marketItem = {
+                id: id,
+                name: name,
+                price: price,
+                image: image,
+                description: description,
+                weight: weight
+            };
+            
+            // 1. تخزين البيانات في localStorage (ذاكرة المتصفح المؤقتة)
+            localStorage.setItem('selectedMarketItem', JSON.stringify(marketItem));
+            
+            // 2. التوجيه الفعلي لصفحة التفاصيل (تأكد أنك أنشأت هذه الصفحة)
+            window.location.href = 'supermarket-details.html';
+        }
+    </script>
+</body>
+</html>

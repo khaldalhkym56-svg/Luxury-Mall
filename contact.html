@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتصل بنا - الفخامة مول</title>
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --edu-purple: #6f42c1;
+            --edu-purple-light: #f3f0ff;
+            --text-dark: #2b2b2b;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--text-dark);
+            padding-top: 80px;
+            overflow-x: hidden; /* لمنع أي ظهور لشريط التمرير الأفقي */
+        }
+
+        /* تنسيقات النافبار المصلحة */
+        .navbar {
+            padding: 0.8rem 0;
+        }
+        .navbar-brand {
+            font-size: 1.6rem;
+            margin-left: 2rem; /* مسافة بسيطة بعد اللوجو */
+        }
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-dark) !important;
+            padding: 0.5rem 1rem !important;
+            transition: 0.3s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--edu-purple) !important;
+            font-weight: 700;
+        }
+
+        /* تنسيق البطاقات */
+        .custom-card {
+            background: #ffffff;
+            border: none;
+            border-radius: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            height: 100%;
+        }
+        
+        .icon-box {
+            width: 55px;
+            height: 55px;
+            background-color: var(--edu-purple-light);
+            color: var(--edu-purple);
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        /* زر الواتساب */
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #fff;
+            border-radius: 0.8rem;
+            font-weight: 700;
+            padding: 1rem;
+            border: none;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-whatsapp:hover {
+            background-color: #1ebe57;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+            color: #fff;
+        }
+
+        /* الفوتر */
+        .footer {
+            background-color: #1a1d20;
+            color: #ffffff;
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+        }
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255,255,255,0.08);
+            color: #fff;
+            border-radius: 10px;
+            margin-left: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-social a:hover {
+            background-color: var(--edu-purple);
+            color: #fff;
+        }
+        .phone-ltr {
+            direction: ltr;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">الفخامة<span style="color:var(--edu-purple)"> مول</span></a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">الأقسام</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="clothing.html">الملابس</a></li>
+                            <li><a class="dropdown-item" href="restaurants.html">المطاعم</a></li>
+                            <li><a class="dropdown-item" href="games.html">الألعاب التعليمية</a></li>
+                            <li><a class="dropdown-item" href="supermarket.html">السوبر ماركت</a></li>
+                            <li><a class="dropdown-item" href="home-tools.html">الأدوات المنزلية</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">اتصل بنا</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex ms-lg-3">
+                    <a href="register.html" class="btn btn-primary rounded-pill px-4" style="background:var(--edu-purple); border:none">انضم إلينا</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold mb-3" style="color: var(--edu-purple);">تواصل معنا</h1>
+            <p class="text-muted">نحن في الفخامة مول نسعد دائماً بخدمتكم</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-5">
+                <div class="custom-card">
+                    <h4 class="fw-bold mb-4 border-bottom pb-2">بيانات التواصل</h4>
+                    
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="icon-box me-3">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+                        <div>
+                            <small class="text-muted d-block">الموقع</small>
+                            <span class="fw-bold">اليمن إب شارع تعز</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="icon-box me-3">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <div>
+                            <small class="text-muted d-block">الدعم الفني</small>
+                            <span class="fw-bold phone-ltr">+967 771 599 127</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="icon-box me-3">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <div>
+                            <small class="text-muted d-block">البريد الإلكتروني</small>
+                            <span class="fw-bold">khaldwlydalhkymalhkym@gmail.com</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <div class="icon-box me-3">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <div>
+                            <small class="text-muted d-block">ساعات العمل</small>
+                            <span class="fw-bold">السبت - الخميس: 9ص - 10م</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="custom-card">
+                    <h4 class="fw-bold mb-4 border-bottom pb-2">مراسلة سريعة</h4>
+                    <form id="whatsappForm">
+                        <div class="mb-3">
+                            <label class="form-label">الاسم</label>
+                            <input type="text" id="userName" class="form-control border-0 bg-light" placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">الرسالة</label>
+                            <textarea id="userMessage" class="form-control border-0 bg-light" rows="5" placeholder="اكتب استفسارك هنا..." required></textarea>
+                        </div>
+                        <button type="button" onclick="sendToWhatsApp()" class="btn btn-whatsapp">
+                            إرسال الرسالة عبر واتساب <i class="bi bi-whatsapp ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">الفخامة مول</h5>
+                    <p style="color: #adb5bd;">تجربة تسوق فريدة تجمع بين الجودة والفخامة في قلب مدينة إب.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">اتصال سريع</h5>
+                    <p class="mb-1" style="color: #adb5bd;"><i class="bi bi-geo-alt me-2"></i> اليمن إب شارع تعز</p>
+                    <p class="mb-1 phone-ltr" style="color: #adb5bd;"><i class="bi bi-telephone me-2"></i> +967 771 599 127</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-3">تابعنا</h5>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/share/1HeK1mSQ4r/" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/kh.gr.w?igsh=cHgyMjh1Zjl0Nngy" target="_blank"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 pt-4 border-top border-secondary">
+                <p class="mb-0" style="color: #6c757d;">&copy; 2026 الفخامة مول. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function sendToWhatsApp() {
+            const name = document.getElementById('userName').value;
+            const message = document.getElementById('userMessage').value;
+            if(!name || !message) { alert("يرجى تعبئة الحقول"); return; }
+            
+            const phone = "967771599127";
+            const text = `مرحباً الفخامة مول %0A الاسم: ${name} %0A الرسالة: ${message}`;
+            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html>

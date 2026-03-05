@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل اللعبة التعليمية - مول التسوق</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --edu-purple: #6f42c1;
+            --edu-teal: #20c997;
+            --edu-yellow: #ffc107;
+            --dark-gaming: #1a1a2e;
+            --light-bg: #fdfdfd;
+            --transition: all 0.3s ease;
+            --shadow: 0 15px 35px rgba(111, 66, 193, 0.1);
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            padding-top: 80px;
+            background-color: #fcfaff;
+            color: var(--dark-gaming);
+        }
+
+        .navbar-brand span { color: var(--edu-purple); font-weight: 700; }
+
+        /* مسار التنقل */
+        .breadcrumb-section {
+            background-color: white;
+            padding: 15px 0;
+            border-bottom: 2px solid #f1f1f1;
+            margin-bottom: 2rem;
+        }
+        .breadcrumb-item a { color: #888; text-decoration: none; }
+        .breadcrumb-item.active { color: var(--edu-purple); font-weight: 700; }
+
+        /* حاوية المنتج */
+        .game-detail-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(111, 66, 193, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .game-image-side {
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            min-height: 450px;
+        }
+
+        .game-image-side img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 20px;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .game-info-side {
+            padding: 40px;
+        }
+
+        .game-badge {
+            background: var(--edu-yellow);
+            color: #333;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .game-title {
+            font-weight: 800;
+            font-size: 2.5rem;
+            color: var(--edu-purple);
+            margin-bottom: 15px;
+        }
+
+        .game-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--edu-teal);
+            margin-bottom: 25px;
+        }
+
+        .game-description {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* التحكم في الكمية */
+        .qty-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .qty-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 15px;
+            border: 2px solid var(--edu-purple);
+            background: white;
+            color: var(--edu-purple);
+            font-weight: 700;
+            transition: var(--transition);
+        }
+
+        .qty-btn:hover {
+            background: var(--edu-purple);
+            color: white;
+        }
+
+        .qty-input {
+            width: 60px;
+            text-align: center;
+            border: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: transparent;
+        }
+
+        /* زر الإضافة للسلة */
+        .btn-add-to-cart {
+            background: linear-gradient(45deg, var(--edu-purple), #8e44ad);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            width: 100%;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(111, 66, 193, 0.2);
+        }
+
+        .btn-add-to-cart:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(111, 66, 193, 0.3);
+            color: var(--edu-yellow);
+        }
+
+        .btn-back {
+            color: var(--edu-purple);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer {
+            background: var(--dark-gaming);
+            color: white;
+            padding: 40px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="font-size: 1.6rem; letter-spacing: -0.5px;">
+    الفخامة<span style="color: var(--primary-color);"> مول</span>
+</a>
+            <div class="d-flex align-items-center">
+                <a href="#" class="text-dark position-relative me-3">
+                    <i class="bi bi-cart3 fs-4"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="games.html">الألعاب التعليمية</a></li>
+                    <li class="breadcrumb-item active" id="breadcrumb-game-name">تفاصيل اللعبة</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <main class="container">
+        <a href="games.html" class="btn-back"><i class="bi bi-arrow-right"></i> العودة للألعاب التعليمية</a>
+
+        <div class="game-detail-card" id="game-container">
+            <div class="row g-0">
+                <div class="col-lg-6">
+                    <div class="game-image-side">
+                        <img id="game-img" src="" alt="صورة اللعبة">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="game-info-side">
+                        <span class="game-badge">لعبة تعليمية ذكية ✨</span>
+                        <h1 class="game-title" id="game-title">تحميل...</h1>
+                        <div class="game-price" id="game-price">0 ر.س</div>
+                        <p class="game-description" id="game-desc"></p>
+
+                        <hr class="my-4">
+
+                        <div class="qty-container">
+                            <span class="fw-bold me-2">الكمية:</span>
+                            <button class="qty-btn" onclick="updateQty(-1)"><i class="bi bi-dash"></i></button>
+                            <input type="number" id="qty-input" class="qty-input" value="1" min="1" readonly>
+                            <button class="qty-btn" onclick="updateQty(1)"><i class="bi bi-plus"></i></button>
+                        </div>
+
+                        <button class="btn-add-to-cart" onclick="addToCart()">
+                            <i class="bi bi-cart-plus me-2"></i> إضافة إلى السلة التعليمية
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer text-center" style="background-color: var(--light-bg); padding: 3rem 0; border-top: 4px solid var(--edu-purple); box-shadow: var(--shadow);">
+    <div class="container">
+        <h5 class="fw-bold mb-2" style="color: var(--dark-gaming);">
+            الفخامة<span style="color: var(--edu-purple);"> مول</span> 
+            <span class="ms-2 badge rounded-pill" style="background-color: var(--edu-teal); font-size: 0.8rem; vertical-align: middle;">قسم الألعاب التعليمية</span>
+        </h5>
+        
+        <p class="mb-2" style="color: var(--dark-gaming); opacity: 0.8;">
+            &copy; 2026 جميع الحقوق محفوظة
+        </p>
+        
+        <div class="mt-3">
+            <small style="color: var(--dark-gaming); font-weight: 600; letter-spacing: 0.5px;">
+                <i class="bi bi-star-fill" style="color: var(--edu-yellow);"></i> 
+                بناء جيل أذكى.. لعبة تلو الأخرى 
+                <i class="bi bi-puzzle-fill" style="color: var(--edu-teal);"></i>
+            </small>
+        </div>
+    </div>
+</footer>
+
+
+    <script>
+        let currentGame = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // جلب البيانات من LocalStorage
+            const rawData = localStorage.getItem('selectedGame');
+            
+            if (rawData) {
+                currentGame = JSON.parse(rawData);
+                
+                // تعبئة البيانات في الصفحة
+                document.getElementById('game-title').textContent = currentGame.name;
+                document.getElementById('breadcrumb-game-name').textContent = currentGame.name;
+                document.getElementById('game-price').textContent = currentGame.price + ' ر.س';
+                document.getElementById('game-desc').textContent = currentGame.description;
+                document.getElementById('game-img').src = currentGame.image;
+            } else {
+                // إذا لم يوجد منتج مختار
+                document.getElementById('game-container').innerHTML = `
+                    <div class="p-5 text-center">
+                        <h3>عذراً، لم يتم اختيار لعبة!</h3>
+                        <a href="games.html" class="btn btn-primary mt-3">العودة لقسم الألعاب</a>
+                    </div>`;
+            }
+
+            updateCartCounter();
+        });
+
+        // دالة تغيير الكمية
+        function updateQty(step) {
+            const input = document.getElementById('qty-input');
+            let currentVal = parseInt(input.value);
+            let newVal = currentVal + step;
+            if (newVal >= 1) input.value = newVal;
+        }
+
+        // دالة الإضافة للسلة (تستخدم نفس السلة الموحدة للموقع)
+        function addToCart() {
+            if (!currentGame) return;
+
+            const quantity = parseInt(document.getElementById('qty-input').value);
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+
+            // التحقق إذا كانت اللعبة موجودة مسبقاً في السلة
+            const existingIndex = cart.findIndex(item => item.id === currentGame.id);
+            
+            if (existingIndex > -1) {
+                cart[existingIndex].quantity += quantity;
+            } else {
+                cart.push({
+                    id: currentGame.id,
+                    name: currentGame.name,
+                    price: currentGame.price,
+                    quantity: quantity
+                });
+            }
+
+            // حفظ السلة وتحديث العداد
+            localStorage.setItem('restaurantCart', JSON.stringify(cart));
+            updateCartCounter();
+
+            // تنبيه نجاح
+            alert(`تمت إضافة ${quantity} من "${currentGame.name}" إلى سلة التسوق!`);
+        }
+
+        // تحديث عداد السلة
+        function updateCartCounter() {
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+            const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = total;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الوجبة - مول التسوق</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #e67e22; 
+            --primary-hover: #d35400;
+            --text-dark: #2c3e50;
+            --gray-color: #7f8c8d;
+            --light-bg: #f8f9fa;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            padding-top: 76px;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+        
+        .navbar-brand span { color: var(--primary-color); font-weight: 700; }
+
+        /* مسار التنقل (Breadcrumb) */
+        .breadcrumb-section {
+            background-color: white;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+        .breadcrumb { margin-bottom: 0; }
+        .breadcrumb a { color: var(--gray-color); text-decoration: none; transition: var(--transition); }
+        .breadcrumb a:hover { color: var(--primary-color); }
+        .breadcrumb-item.active { color: var(--primary-color); font-weight: 600; }
+
+        /* منطقة تفاصيل المنتج */
+        .meal-image-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            background-color: white;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .meal-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .meal-details-wrapper {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+
+        .meal-title {
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .meal-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .meal-description {
+            color: var(--gray-color);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        /* متحكم الكمية */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            background: var(--light-bg);
+            border-radius: 50px;
+            padding: 5px;
+            width: max-content;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+        }
+
+        .qty-btn {
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .qty-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .qty-input {
+            width: 60px;
+            border: none;
+            background: transparent;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .qty-input:focus { outline: none; }
+
+        /* الأزرار */
+        .btn-add-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn-add-cart:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+            color: white;
+        }
+
+        .btn-back {
+            color: var(--gray-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-back:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        /* التذييل */
+        .footer { background-color: #212529; color: #fff; padding-top: 3rem; margin-top: 5rem; }
+        .footer h5 { color: var(--primary-color); font-weight: 600; }
+        .copyright { border-top: 1px solid rgba(255,255,255,0.1); padding: 1.5rem 0; margin-top: 2rem; font-size: 0.9rem; text-align: center; color: #adb5bd;}
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--text-dark); font-size: 1.6rem;">
+    الفخامة<span style="color: var(--primary-color);"> مول</span>
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">الرئيسية</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown">الأقسام</a>
+                        <ul class="dropdown-menu border-0 shadow">
+                            <li><a class="dropdown-item" href="clothing.html">الملابس</a></li>
+                            <li><a class="dropdown-item active" href="restaurants.html">المطاعم</a></li>
+                            <li><a class="dropdown-item" href="games.html">الألعاب</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <a href="#" class="text-dark position-relative" id="cartDropdown" data-bs-toggle="dropdown">
+                            <i class="bi bi-cart3 fs-4"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-count">0</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end border-0 shadow" id="cart-items" style="min-width: 250px;">
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">الرئيسية</a></li>
+                    <li class="breadcrumb-item"><a href="restaurants.html">المطاعم</a></li>
+                    <li class="breadcrumb-item"><a href="restaurant-menu.html">مطعم الذواقة</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-meal-name">جاري التحميل...</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <section class="container mb-5 pb-5">
+        <div class="mb-4">
+            <a href="javascript:history.back()" class="btn-back"><i class="bi bi-arrow-right"></i> العودة للقائمة</a>
+        </div>
+
+        <div id="dynamic-content-area" class="row g-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="meal-image-container">
+                    <img id="meal-img" src="" alt="صورة الوجبة">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="meal-details-wrapper">
+                    <span class="badge bg-warning text-dark mb-2 px-3 py-2 rounded-pill"><i class="bi bi-star-fill text-danger"></i> الأكثر مبيعاً</span>
+                    
+                    <h1 class="meal-title" id="meal-title">جاري التحميل...</h1>
+                    <div class="meal-price" id="meal-price">0 ر.س</div>
+                    
+                    <p class="meal-description" id="meal-desc">
+                        جاري تحميل التفاصيل...
+                    </p>
+
+                    <div class="mb-4">
+                        <label class="fw-bold mb-2">الكمية:</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn" onclick="updateQty(-1)"><i class="bi bi-dash"></i></button>
+                            <input type="number" id="qty-input" class="qty-input" value="1" min="1" readonly>
+                            <button class="qty-btn" onclick="updateQty(1)"><i class="bi bi-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col-sm-12">
+                            <button onclick="addToCartFromDetails()" class="btn-add-cart">
+                                <i class="bi bi-cart-plus me-2"></i> إضافة إلى السلة
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" style="background-color: var(--light-bg); padding: 4rem 0 2rem; border-top: 4px solid var(--primary-color);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-4 text-center">
+                <h5 class="fw-bold mb-3" style="color: var(--text-dark); font-size: 1.8rem;">
+                    الفخامة<span style="color: var(--primary-color);"> مول</span>
+                </h5>
+                <p style="color: var(--gray-color); max-width: 600px; margin: 0 auto; font-weight: 500;">
+                    <i class="bi bi-truck me-2" style="color: var(--primary-color);"></i>
+                    نضمن لك وصول وجبتك ساخنة وطازجة بأسرع وقت ممكن.
+                </p>
+            </div>
+        </div>
+        
+        <hr class="my-4" style="opacity: 0.1;">
+
+        <div class="copyright text-center">
+            <p class="mb-0" style="color: var(--text-dark); font-weight: 600;">
+                &copy; 2026 <span style="color: var(--primary-color);">الفخامة مول</span> - جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // المتغيرات العامة للوجبة
+        let currentMeal = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. قراءة بيانات الوجبة من الـ Local Storage
+            const savedMealData = localStorage.getItem('selectedMeal');
+            
+            if (savedMealData) {
+                currentMeal = JSON.parse(savedMealData);
+                
+                // 2. تعبئة البيانات في واجهة المستخدم
+                document.getElementById('meal-title').textContent = currentMeal.name;
+                document.getElementById('breadcrumb-meal-name').textContent = currentMeal.name;
+                document.getElementById('meal-price').textContent = currentMeal.price + ' ر.س';
+                document.getElementById('meal-desc').textContent = currentMeal.description;
+                
+                const mealImg = document.getElementById('meal-img');
+                mealImg.src = currentMeal.image;
+                mealImg.alt = currentMeal.name;
+            } else {
+                // حالة عدم وجود بيانات (المستخدم دخل الرابط مباشرة)
+                document.getElementById('dynamic-content-area').innerHTML = `
+                    <div class="col-12 text-center py-5">
+                        <div class="alert alert-warning d-inline-block shadow-sm p-4 rounded-4">
+                            <i class="bi bi-exclamation-triangle display-4 text-warning d-block mb-3"></i>
+                            <h4 class="alert-heading fw-bold">لم يتم تحديد وجبة!</h4>
+                            <p>الرجاء العودة لقائمة المطعم واختيار وجبة لعرض تفاصيلها.</p>
+                            <a href="javascript:history.back()" class="btn btn-primary mt-2 px-4 rounded-pill">العودة للمطعم</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // تحديث السلة في شريط التنقل
+            updateCartUI();
+        });
+
+        // دالة لزيادة ونقصان الكمية
+        function updateQty(change) {
+            const qtyInput = document.getElementById('qty-input');
+            let currentQty = parseInt(qtyInput.value);
+            
+            let newQty = currentQty + change;
+            if (newQty < 1) newQty = 1; // لا يمكن أن تكون الكمية أقل من 1
+            
+            qtyInput.value = newQty;
+        }
+
+        // دالة لإضافة الوجبة بالكمية المحددة للسلة
+        function addToCartFromDetails() {
+            if (!currentMeal) return;
+
+            const quantityToAdd = parseInt(document.getElementById('qty-input').value);
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+            
+            // التحقق مما إذا كانت الوجبة موجودة
+            const existingItem = cart.find(item => item.id === currentMeal.id);
+            
+            if (existingItem) {
+                existingItem.quantity += quantityToAdd;
+            } else {
+                cart.push({ 
+                    id: currentMeal.id, 
+                    name: currentMeal.name, 
+                    price: parseFloat(currentMeal.price), 
+                    quantity: quantityToAdd 
+                });
+            }
+            
+            // حفظ السلة وتحديث الواجهة
+            localStorage.setItem('restaurantCart', JSON.stringify(cart));
+            updateCartUI();
+            
+            // تنبيه نجاح جذاب (مؤقت)
+            const btn = document.querySelector('.btn-add-cart');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i> تمت الإضافة بنجاح!';
+            btn.classList.add('bg-success', 'text-white');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.classList.remove('bg-success', 'text-white');
+            }, 2000);
+        }
+
+        // نفس دالة تحديث السلة من الصفحة السابقة لتعمل هنا أيضاً
+        function updateCartUI() {
+            let cart = JSON.parse(localStorage.getItem('restaurantCart')) || [];
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').innerText = totalItems;
+            
+            const cartMenu = document.getElementById('cart-items');
+            cartMenu.innerHTML = '<li><h6 class="dropdown-header">سلة الطلبات</h6></li>';
+            
+            if (cart.length === 0) {
+                cartMenu.innerHTML += '<li><span class="dropdown-item text-muted">السلة فارغة</span></li>';
+            } else {
+                let totalPrice = 0;
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    totalPrice += itemTotal;
+                    cartMenu.innerHTML += `
+                        <li><a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                            <span class="text-truncate" style="max-width: 120px;">${item.name}</span>
+                            <span class="badge bg-light text-dark border" dir="ltr">${item.quantity} x ${item.price}</span>
+                        </a></li>`;
+                });
+                cartMenu.innerHTML += '<li><hr class="dropdown-divider"></li>';
+                cartMenu.innerHTML += `<li><div class="dropdown-item fw-bold text-end">المجموع: ${totalPrice} ر.س</div></li>`;
+                cartMenu.innerHTML += '<li><a class="dropdown-item text-white bg-primary fw-bold text-center mt-2 mx-2 rounded w-auto" href="#">إتمام الطلب</a></li>';
+            }
+        }
+    </script>
+</body>
+</html>
